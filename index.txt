@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xapely - Scale Your Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="font-sans text-gray-800">
+    <!-- Navbar -->
+    <header class="bg-gray-900 text-white">
+      <div class="container mx-auto flex items-center justify-between py-4 px-6">
+        <h1 class="text-xl font-bold">Xapely</h1>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#" class="hover:text-blue-400">About</a>
+          <a href="#" class="hover:text-blue-400">Pricing</a>
+          <a href="#" class="hover:text-blue-400">Contact</a>
+        </nav>
+        <a href="#" class="ml-6 px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700">Log In</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-20">
+      <div class="container mx-auto flex flex-col md:flex-row items-center px-6">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h2 class="text-4xl font-bold leading-tight mb-4">
+            The simple tool to help your <span class="text-blue-600">business scale</span>
+          </h2>
+          <p class="text-lg mb-6">
+            We’re building a platform that brings everything your business needs together, all in one simple place.
+          </p>
+          <a href="#" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">Get Started →</a>
+        </div>
+        <div class="md:w-1/2">
+          <img src="https://via.placeholder.com/500x300" alt="Dashboard preview" class="rounded-lg shadow" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-6 text-center">
+        <h3 class="text-2xl font-bold mb-4">Everything you need to scale</h3>
+        <p class="mb-12 text-gray-600">Our comprehensive suite of tools grows with your business, from startup to enterprise.</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg">
+            <h4 class="font-semibold mb-2">Smart Invoicing</h4>
+            <p class="text-sm text-gray-600">Quickly generate professional invoices with your business details in seconds.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg">
+            <h4 class="font-semibold mb-2">Easy Sharing</h4>
+            <p class="text-sm text-gray-600">Share invoices directly through the channels your clients already use.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg">
+            <h4 class="font-semibold mb-2">Secured Payments</h4>
+            <p class="text-sm text-gray-600">Get paid seamlessly with integrated payment options, including cards and bank transfers.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg">
+            <h4 class="font-semibold mb-2">Client Management</h4>
+            <p class="text-sm text-gray-600">Automatically issue receipts when payment is made, with zero extra effort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 container mx-auto px-6">
+      <h3 class="text-2xl font-bold text-center mb-12">How It Works</h3>
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h4 class="font-bold text-xl mb-2">Create Invoice</h4>
+          <p class="mb-4">Easily create professional invoices in seconds with all details your clients need.</p>
+          <a href="#" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Get Started</a>
+        </div>
+        <img src="https://via.placeholder.com/400x250" alt="Create Invoice" class="rounded-lg shadow" />
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <img src="https://via.placeholder.com/400x250" alt="Send Instantly" class="rounded-lg shadow order-2 md:order-1" />
+        <div class="order-1 md:order-2">
+          <h4 class="font-bold text-xl mb-2">Send Instantly</h4>
+          <p class="mb-4">Share invoices through WhatsApp, email, or SMS so clients receive them quickly.</p>
+          <a href="#" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Get Started</a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h4 class="font-bold text-xl mb-2">Get Paid</h4>
+          <p class="mb-4">Accept payments with secure options that make it easy for you and your clients.</p>
+          <a href="#" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Get Started</a>
+        </div>
+        <img src="https://via.placeholder.com/400x250" alt="Get Paid" class="rounded-lg shadow" />
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <img src="https://via.placeholder.com/400x250" alt="Receipt Auto-Generated" class="rounded-lg shadow order-2 md:order-1" />
+        <div class="order-1 md:order-2">
+          <h4 class="font-bold text-xl mb-2">Receipt Auto-Generated</h4>
+          <p class="mb-4">Automatically generate and send digital receipts to clients the moment payment is completed.</p>
+          <a href="#" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-6 text-center">
+        <h3 class="text-2xl font-bold mb-12">What People Have Said</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-white rounded-xl shadow">
+            <p class="italic mb-4">“A terrific piece of praise”</p>
+            <div class="flex items-center justify-center space-x-2">
+              <img src="https://via.placeholder.com/40" class="rounded-full" />
+              <div>
+                <p class="font-semibold">Name</p>
+                <p class="text-sm text-gray-600">Description</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow">
+            <p class="italic mb-4">“A fantastic bit of feedback”</p>
+            <div class="flex items-center justify-center space-x-2">
+              <img src="https://via.placeholder.com/40" class="rounded-full" />
+              <div>
+                <p class="font-semibold">Name</p>
+                <p class="text-sm text-gray-600">Description</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow">
+            <p class="italic mb-4">“A genuinely glowing review”</p>
+            <div class="flex items-center justify-center space-x-2">
+              <img src="https://via.placeholder.com/40" class="rounded-full" />
+              <div>
+                <p class="font-semibold">Name</p>
+                <p class="text-sm text-gray-600">Description</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div>
+          <h4 class="font-bold mb-4">Site name</h4>
+          <div class="flex space-x-3">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-2">Topic</h5>
+          <ul class="space-y-1 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-2">Topic</h5>
+          <ul class="space-y-1 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-2">Topic</h5>
+          <ul class="space-y-1 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+            <li><a href="#" class="hover:text-white">Page</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
