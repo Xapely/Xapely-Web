@@ -1042,6 +1042,7 @@ main {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 4rem;
     margin-bottom: 4rem;
+    row-gap: 1.5rem;
 }
 
 .footer-brand {
