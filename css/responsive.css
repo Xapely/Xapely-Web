@@ -374,16 +374,7 @@
         text-align: center;
     }
 
-    /* Extra small phones: nudge How It Works visuals a bit more right to reveal numbers */
-    @media (max-width: 380px) {
-        .how-card {
-            margin-left: 2.2rem;
-        }
-        .how-step-number {
-            left: 22px;
-            font-size: 38px;
-        }
-    }
+
 
     /* About Page Specific */
     .about-hero {
@@ -543,11 +534,11 @@
     }
 
     .how-step-number {
-        left: 12px;
+        left: 16px;
     }
 
     .how-card {
-        margin-left: 1.7rem;
+        margin-left: 2.5rem;
     }
 }
 
