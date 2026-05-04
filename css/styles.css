@@ -1046,6 +1046,15 @@ main {
 
 .footer-brand {
     max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+/* hide the footer-brand social icons on desktop (we show footer-bottom social there) */
+.footer-brand .footer-social {
+    display: none;
 }
 
 .footer-logo {
@@ -1088,7 +1097,6 @@ main {
 
 .footer-bottom {
     padding-top: 2rem;
-    padding-right: 3rem; 
     border-top: 1px solid rgba(156, 163, 175, 0.2);
     display: flex;
     justify-content: space-between;
@@ -1102,9 +1110,8 @@ main {
 
 .footer-social {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
-    margin-right: 2rem; 
 }
 
 .footer-social a {

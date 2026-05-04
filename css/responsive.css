@@ -288,7 +288,7 @@
     .testimonials h2 {
         font-size: 30px;
         margin-bottom: 2rem;
-        text-align: left;
+        text-align: center;
     }
 
     .carousel-wrapper {
@@ -319,6 +319,70 @@
     .carousel-btn {
         width: 42px;
         height: 42px;
+    }
+
+    /* CTA buttons near footer - keep on one line on phones */
+    .cta-buttons {
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: nowrap;
+    }
+
+    .cta-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    /* Footer mobile tweaks: stack grid and reduce spacing so content fits */
+    .footer {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .footer-container {
+        padding: 0 0.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+        max-width: none;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding-right: 0;
+    }
+
+    /* show social under logo on mobile and hide the desktop footer social */
+    .footer-brand .footer-social {
+        display: flex;
+    }
+
+    .footer-bottom .footer-social {
+        display: none;
+    }
+
+    .footer-copyright {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Extra small phones: nudge How It Works visuals a bit more right to reveal numbers */
+    @media (max-width: 380px) {
+        .how-card {
+            margin-left: 2.2rem;
+        }
+        .how-step-number {
+            left: 22px;
+            font-size: 38px;
+        }
     }
 
     /* About Page Specific */
