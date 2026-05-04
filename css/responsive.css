@@ -1,0 +1,495 @@
+/* Mobile First Breakpoints:
+- Small: 0-640px (default)
+- Medium: 641px-1024px
+- XLarge: 1025px+ */
+
+/* Mobile menu button - hidden by default for desktop */
+.mobile-menu-btn {
+    display: none;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* Small devices (phones, 640px and below) */
+@media (max-width: 640px) {
+    /* Header/Navigation */
+    .nav-container {
+        position: relative;
+    }
+    
+    .nav-container .nav-links {
+        display: none; /* Hide desktop nav */
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Show mobile menu button */
+        background: none;
+        border: none;
+        color: #111827;
+        font-size: 24px;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .mobile-nav {
+        display: block; /* Show mobile nav container */
+    }
+
+    /* Mobile nav panel behaviour */
+    .mobile-nav {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 12px 30px rgba(17,24,39,0.08);
+        display: none;
+        z-index: 40;
+    }
+
+    .mobile-nav.open {
+        display: block;
+    }
+
+    .mobile-nav .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .mobile-nav .nav-link,
+    .mobile-nav .nav-btn {
+        padding: 0.75rem 0.5rem;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2.5rem 1rem 3rem;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .hero-content {
+        text-align: left;
+    }
+
+    .hero-title {
+        font-size: clamp(34px, 7vw, 38px);
+        line-height: 1.2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-title .title-line {
+        display: block;
+        white-space: nowrap;
+        margin-bottom: 0.2rem;
+    }
+
+    .hero-text {
+        font-size: 18px;
+        margin: 0 0 2rem;
+    }
+
+    .hero-cta {
+        padding: 0.8rem 1.35rem;
+        font-size: 0.95rem;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .orbit-highlight {
+        height: auto;
+        padding: 4.25rem 1rem;
+    }
+
+    /* How It Works Mobile */
+    .features {
+        padding: 4rem 1rem 4.5rem;
+    }
+
+    .features-header {
+        margin-bottom: 3rem;
+    }
+
+    .features-header h2 {
+        font-size: 40px;
+    }
+
+    .how-steps {
+        gap: 3rem;
+    }
+
+    .how-step {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .how-step.reverse .how-visual,
+    .how-step.reverse .how-copy {
+        order: initial;
+    }
+
+    .how-visual {
+        min-height: 150px;
+    }
+
+    .how-step-number {
+        font-size: 46px;
+        left: 8px;
+    }
+
+    .how-step-orb {
+        width: 130px;
+        height: 130px;
+        left: 15px;
+        bottom: -10px;
+    }
+
+    .how-card {
+        width: min(100%, 280px);
+    }
+
+    /* Reduce sizes of images and graphics on mobile */
+    .hero-image img {
+        max-width: 92%;
+        margin: 0 auto;
+    }
+
+    .invoice-work-media {
+        height: 180px;
+    }
+
+    .how-card {
+        width: min(100%, 240px);
+    }
+
+    .send-card {
+        width: min(100%, 240px);
+        padding: 0.85rem 0.9rem 1rem;
+    }
+
+    .invoice-send-stage {
+        min-height: 124px;
+        padding: 0.7rem;
+        overflow: hidden;
+    }
+
+    .invoice-mockup {
+        width: 100%;
+        max-width: 188px;
+        padding: 0.65rem 0.7rem;
+    }
+
+    .invoice-mockup-top {
+        gap: 0.3rem;
+        margin-bottom: 0.65rem;
+    }
+
+    .invoice-title-mini {
+        font-size: 10px;
+    }
+
+    .invoice-status {
+        padding: 0.2rem 0.45rem;
+        font-size: 9px;
+    }
+
+    .invoice-total-row {
+        font-size: 10px;
+    }
+
+    .invoice-total-row strong {
+        font-size: 12px;
+    }
+
+    .how-visual {
+        min-height: 130px;
+    }
+
+    .how-step-orb {
+        width: 110px;
+        height: 110px;
+        left: 12px;
+        bottom: -8px;
+    }
+
+    .get-paid-image {
+        max-width: 200px;
+    }
+
+    .step-image img,
+    .invoice-work-media img,
+    .get-paid-image,
+    .feature-card img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .carousel-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    /* Stack the invoices grid on narrow screens */
+    .invoices-work-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    /* Stack generic two-column step items */
+    .step-item {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Make images fluid on mobile */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .how-copy {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .how-copy h3 {
+        font-size: 30px;
+    }
+
+    .how-copy p {
+        font-size: 16px;
+    }
+
+    /* Testimonials Mobile */
+    .testimonials {
+        padding: 4rem 1rem;
+    }
+
+    .testimonials-container {
+        align-items: stretch;
+    }
+
+    .testimonials h2 {
+        font-size: 30px;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    .carousel-wrapper {
+        padding: 1.75rem 1rem 4.5rem;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem 0.5rem 0;
+    }
+
+    .quote-icon {
+        font-size: 56px;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+        font-size: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-controls {
+        top: auto;
+        bottom: 1rem;
+        transform: none;
+        padding: 0 0.5rem;
+    }
+
+    .carousel-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* About Page Specific */
+    .about-hero {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .mission-content,
+    .vision-box {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .mission-text,
+    .vision-text {
+        height: auto;
+        padding: 2rem;
+    }
+
+    .mission-image,
+    .vision-image {
+        height: 300px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Medium devices (tablets, 641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .hero-container {
+        gap: clamp(2rem, 4vw, 3rem);
+        padding: clamp(2.5rem, 4vw, 3rem) 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 4.4vw, 54px);
+        line-height: 1.08;
+    }
+
+    .hero-text {
+        font-size: clamp(17px, 1.8vw, 19px);
+        max-width: 620px;
+    }
+
+    .features {
+        padding: 5rem 1.5rem 5.5rem;
+    }
+
+    .features-header h2 {
+        font-size: clamp(34px, 3.8vw, 44px);
+    }
+
+    .how-step {
+        gap: 2.2rem;
+    }
+
+    .how-card {
+        width: min(100%, 300px);
+    }
+
+    .how-copy h3 {
+        font-size: clamp(28px, 3vw, 32px);
+    }
+
+    .carousel-wrapper {
+        width: 90%;
+    }
+
+    .testimonials {
+        padding: 5rem 1.5rem;
+    }
+
+    .testimonials h2 {
+        font-size: clamp(32px, 3.8vw, 40px);
+    }
+
+    .orbit-highlight h2 {
+        font-size: clamp(30px, 3.5vw, 36px);
+    }
+
+    .orbit-highlight p,
+    .invoices-work-header p {
+        font-size: clamp(17px, 1.9vw, 19px);
+    }
+
+    .invoices-work-header h2 {
+        font-size: clamp(38px, 4vw, 46px);
+    }
+
+    .mission-content,
+    .vision-box {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (laptops, 769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .how-step {
+        gap: 2.2rem;
+    }
+
+    .how-card {
+        width: min(100%, 300px);
+    }
+
+    .how-copy h3 {
+        font-size: 32px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .carousel-wrapper {
+        width: 90%;
+    }
+
+    .mission-content,
+    .vision-box {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+/* XLarge devices (desktops, 1025px and up) */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Very small screens - tone down large hero text */
+@media (max-width: 420px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+}
+
+/* Phone-only tweak: nudge How It Works visuals right so step numbers stay clear */
+@media (max-width: 640px) {
+    .how-visual {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .how-step-number {
+        left: 12px;
+    }
+
+    .how-card {
+        margin-left: 1.7rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .how-step-number {
+        left: 20px;
+        font-size: 40px;
+    }
+}

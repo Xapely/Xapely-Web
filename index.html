@@ -7,15 +7,25 @@
     <title>Xapely</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="Xapely" class="logo-image">
+                <img src="assets/images/logo.png" alt="Xapely logo" class="logo-image">
             </div>
             <div class="nav-links">
-                <a href="about.html" class="nav-link">About</a>
+                <a href="about.html" class="nav-link">Our Company</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-btn">Log In</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+        </nav>
+        <nav class="mobile-nav">
+            <div class="nav-links">
+                <a href="about.html" class="nav-link">Our Company</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="login.html" class="nav-btn">Log In</a>
@@ -36,99 +46,133 @@
                     <a href="signup.html" class="hero-cta">Get Started <span>→</span></a>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/images/hero-image.png" alt="Dashboard Preview" width="100%" height="auto">
+                    <img data-src="assets/images/hero-image.png" alt="Orbit invoicing dashboard preview" width="100%" height="auto" class="lazy">
                 </div>
             </div>
         </section>
+
+        <section class="orbit-highlight">
+            <div class="orbit-highlight-container">
+                <h2>Meet Orbit, our Invoicing platform</h2>
+                <p>Orbit is a professional invoicing suite that helps you get paid faster while keeping your business compliant. Send professional invoices in seconds, track payments in real-time, and let Orbit handle the legal requirements so you can focus on your growth.</p>
+                <a href="#" class="orbit-btn">View Orbit</a>
+            </div>
+        </section>
+
+        <section class="invoices-work">
+            <div class="invoices-work-container">
+                <div class="invoices-work-header">
+                    <h2>Invoices that work</h2>
+                    <p>Create and send professional invoices instantly</p>
+                </div>
+
+                <div class="invoices-work-grid">
+                    <article class="invoice-work-card">
+                        <div class="invoice-work-media">
+                            <img src="assets/images/image1.png" alt="Invoice creation screen preview">
+                        </div>
+                        <div class="invoice-work-body">
+                            <span class="invoice-work-kicker">Simple</span>
+                            <h3>Smart Invoicing</h3>
+                            <p>Quickly generate professional invoices with your business details in seconds.</p>
+                        </div>
+                    </article>
+
+                    <article class="invoice-work-card">
+                        <div class="invoice-work-media">
+                            <img src="assets/images/image2.png" alt="Invoice sharing options preview">
+                        </div>
+                        <div class="invoice-work-body">
+                            <span class="invoice-work-kicker">Efficient</span>
+                            <h3>Easy Sharing</h3>
+                            <p>Share invoices directly through the channels your clients already use.</p>
+                        </div>
+                    </article>
+
+                    <article class="invoice-work-card">
+                        <div class="invoice-work-media">
+                            <img src="assets/images/image3.png" alt="Online payment confirmation preview">
+                        </div>
+                        <div class="invoice-work-body">
+                            <span class="invoice-work-kicker">Reliable</span>
+                            <h3>Secured Payments</h3>
+                            <p>Get paid seamlessly with integrated payment options, including card and bank transfers.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="features">
             <div class="features-container">
                 <div class="features-header">
-                    <h2>Xapely Orbit</h2>
-                    <p>Our comprehensive suite of tools grows with your business, from startup to enterprise.</p>
+                    <h2>How it works</h2>
+                    <p>It's about you and your family, having a comfortable payment, exceptional service and a lender.</p>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="assets/images/invoice-icon.png" alt="Smart Invoicing">
+                <div class="how-steps">
+                    <article class="how-step">
+                        <div class="how-visual">
+                            <span class="how-step-number">01</span>
+                            <div class="how-step-orb orb-pink"></div>
+                            <div class="feature-card how-card account-card">
+                                <h3>Create Invoice</h3>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line short"></span>
+                                <button type="button">Create</button>
+                            </div>
                         </div>
-                        <h3>Smart Invoicing</h3>
-                        <p>Quickly generate professional invoices with your business details in seconds.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="assets/images/sharing-icon.png" alt="Easy Sharing">
-                        </div>
-                        <h3>Easy Sharing</h3>
-                        <p>Share invoices directly through the channels your clients already use.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="assets/images/payments-icon.png" alt="Secured Payments">
-                        </div>
-                        <h3>Secured Payments</h3>
-                        <p>Get paid seamlessly with integrated payment options, including card and bank transfers</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="assets/images/client-icon.png" alt="Client Management">
-                        </div>
-                        <h3>Client Management</h3>
-                        <p>Automatically issue receipts to clients the moment payment is made, with zero extra effort.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="how-it-works">
-            <div class="bubble-1"></div>
-            <div class="bubble-2"></div>
-            <div class="bubble-3"></div>
-            <div class="bubble-4"></div>
-            <div class="how-container">
-                <h2>How It Works</h2>
-                <div class="steps-grid">
-                    <div class="step-item">
-                        <div class="step-content">
+                        <div class="how-copy">
                             <h3>Create Invoice</h3>
-                            <p>Easily create professional invoices in seconds with all details your clients need.</p>
-                            <a href="#" class="step-btn">Get Started</a>
+                            <p>Generate professional, branded and complaint invoices in seconds. Orbit handles all the legal requirements automatically so you can focus on your next sale.</p>
                         </div>
-                        <div class="step-image">
-                            <img src="assets/images/create-invoice.png" alt="Create Invoice Interface">
-                        </div>
-                    </div>
-                    
-                    <div class="step-item reverse">
-                        <div class="step-content">
-                            <h3>Send Instantly</h3>
-                            <p>Share invoices directly through WhatsApp, email, or SMS so clients receive them quickly.</p>
-                            <a href="#" class="step-btn">Get Started</a>
-                        </div>
-                        <div class="step-image">
-                            <img src="assets/images/send-invoice.png" alt="Send Invoice Interface">
-                        </div>
-                    </div>
+                    </article>
 
-                    <div class="step-item">
-                        <div class="step-content">
+                    <article class="how-step reverse">
+                        <div class="how-visual">
+                            <span class="how-step-number">02</span>
+                            <div class="how-step-orb orb-blue"></div>
+                            <div class="feature-card how-card send-card">
+                                <div class="invoice-send-stage">
+                                    <div class="invoice-mockup">
+                                        <div class="invoice-mockup-top">
+                                            <span class="invoice-dot"></span>
+                                            <span class="invoice-title-mini">Invoice #1042</span>
+                                            <span class="invoice-status">Send</span>
+                                        </div>
+                                        <div class="invoice-mockup-body">
+                                            <span class="mock-line wide"></span>
+                                            <span class="mock-line"></span>
+                                            <span class="mock-line medium"></span>
+                                            <div class="invoice-total-row">
+                                                <span>Total</span>
+                                                <strong>₦1,250</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="how-copy">
+                            <h3>Send Invoice</h3>
+                            <p>Deliver your invoices securely through the channels your customers already use. Whether it’s WhatsApp or email, we ensure your bill gets seen.</p>
+                        </div>
+                    </article>
+
+                    <article class="how-step">
+                        <div class="how-visual">
+                            <span class="how-step-number">03</span>
+                            <div class="how-step-orb orb-yellow get-paid-orb"></div>
+                            <div class="feature-card how-card get-paid-card">
+                                <img src="assets/images/getpaid.png" alt="Phone displaying payment notifications" class="get-paid-image">
+                            </div>
+                        </div>
+                        <div class="how-copy">
                             <h3>Get Paid</h3>
-                            <p>Accept payments with secure options that make it easy for you and your clients.</p>
-                            <a href="#" class="step-btn">Get Started</a>
+                            <p>Collect payments quickly with a smooth checkout experience for your clients and get your money settled directly to you.</p>
                         </div>
-                        <div class="step-image">
-                            <img src="assets/images/get-paid.png" alt="Payment Interface">
-                        </div>
-                    </div>
-
-                    <div class="step-item reverse">
-                        <div class="step-content">
-                            <h3>Receipt Auto-Generated</h3>
-                            <p>Automatically generate and send digital receipts to clients the moment payment is completed.</p>
-                            <a href="#" class="step-btn">Get Started</a>
-                        </div>
-                        <div class="step-image">
-                            <img src="assets/images/receipt.png" alt="Receipt Interface">
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -202,7 +246,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="assets/images/logo.png" alt="Xapely" class="footer-logo">
+                    <img src="assets/images/logo.png" alt="Xapely logo" class="footer-logo">
                     <p>Making business operations simpler and more efficient.</p>
                 </div>
                 
@@ -239,16 +283,16 @@
                 </div>
                 <div class="footer-social">
                     <a href="#" aria-label="X (Twitter)">
-                        <img src="assets/icons/x.svg" alt="X" class="social-icon">
+                        <img src="assets/icons/x.svg" alt="" class="social-icon">
                     </a>
                     <a href="#" aria-label="Instagram">
-                        <img src="assets/icons/instagram.svg" alt="Instagram" class="social-icon">
+                        <img src="assets/icons/instagram.svg" alt="" class="social-icon">
                     </a>
                     <a href="#" aria-label="Facebook">
-                        <img src="assets/icons/facebook.svg" alt="Facebook" class="social-icon">
+                        <img src="assets/icons/facebook.svg" alt="" class="social-icon">
                     </a>
                     <a href="#" aria-label="LinkedIn">
-                        <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                        <img src="assets/icons/linkedin.svg" alt="" class="social-icon">
                     </a>
                 </div>
             </div>
