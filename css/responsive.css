@@ -351,6 +351,11 @@
 
     .footer-brand {
         max-width: none;
+        gap: 0.35rem;
+    }
+
+    .footer-address {
+        max-width: none;
     }
 
     .footer-bottom {
@@ -363,6 +368,7 @@
     /* show social under logo on mobile and hide the desktop footer social */
     .footer-brand .footer-social {
         display: flex;
+        margin-top: 0.6rem;
     }
 
     .footer-bottom .footer-social {
