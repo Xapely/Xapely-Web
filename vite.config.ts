@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -23,11 +23,25 @@ function sharedHead(): Plugin {
     };
 }
 
-export default defineConfig({
-    plugins: [react(), tailwindcss(), sharedHead()],
-    build: {
-        rollupOptions: {
-            input: Object.fromEntries(PAGES.map(page => [page, `${page}.html`])),
+export default defineConfig(({ mode }) => {
+    // Render sets both for web services; locally they're unset and the defaults apply.
+    const { PORT, RENDER_EXTERNAL_HOSTNAME } = loadEnv(mode, '.', ['PORT', 'RENDER_']);
+
+    return {
+        plugins: [react(), tailwindcss(), sharedHead()],
+        // Separate HTML pages, not a single-page app: unknown paths 404 instead of serving index.html.
+        appType: 'mpa',
+        // `npm start` runs `vite preview` to serve dist/ on Render.
+        preview: {
+            host: true,
+            port: PORT ? Number(PORT) : undefined,
+            strictPort: Boolean(PORT),
+            allowedHosts: RENDER_EXTERNAL_HOSTNAME ? [RENDER_EXTERNAL_HOSTNAME] : [],
         },
-    },
+        build: {
+            rollupOptions: {
+                input: Object.fromEntries(PAGES.map(page => [page, `${page}.html`])),
+            },
+        },
+    };
 });
