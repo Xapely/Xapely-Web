@@ -33,7 +33,7 @@ export function Hero() {
                     </p>
 
                     <div className="mt-8 max-w-120">
-                        <WaitlistForm source="landing_hero" note="We’ll only use your email to tell you when Orbit opens." />
+                        <WaitlistForm source="landing_hero" note="We’ll only use your details to tell you when Orbit opens." />
                     </div>
 
                     <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3" aria-label="Works with">

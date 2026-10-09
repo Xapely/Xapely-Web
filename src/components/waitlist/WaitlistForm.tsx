@@ -1,8 +1,8 @@
-import { useId, useState, type FormEvent } from 'react';
+import { useId, useState, type FormEvent, type InputHTMLAttributes } from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
 import { EMAIL_PATTERN } from '../../lib/email';
-import type { WaitlistSource } from '../../lib/waitlist-api';
+import { NAME_MAX_LENGTH, normalizeName, type WaitlistSource } from '../../lib/waitlist-api';
 import { Button } from '../ui/Button';
 import { Icon } from '../ui/Icon';
 import { useWaitlist } from './WaitlistProvider';
@@ -48,6 +48,43 @@ const message = cva('mt-3 text-sm leading-[1.6]', {
     ],
 });
 
+interface FieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> {
+    label: string;
+    tone: Tone;
+    shape: Shape;
+}
+
+/** Floating label on the pill shape; screen-reader-only on the bar. */
+function Field({ label, tone, shape, ...inputProps }: FieldProps) {
+    const id = useId();
+    return (
+        <div className="relative flex-1">
+            <label
+                htmlFor={id}
+                className={shape === 'pill'
+                    ? 'absolute -top-2 left-5 bg-paper px-1.5 text-xs font-medium text-ledger'
+                    : 'sr-only'}
+            >
+                {label}
+            </label>
+            <input id={id} {...inputProps} className={input({ tone, shape })} />
+        </div>
+    );
+}
+
+type FieldName = 'name' | 'email';
+
+interface ValidationError {
+    field: FieldName;
+    message: string;
+}
+
+function validate(name: string, email: string): ValidationError | null {
+    if (!normalizeName(name)) return { field: 'name', message: 'Enter your name.' };
+    if (!EMAIL_PATTERN.test(email.trim())) return { field: 'email', message: 'Enter an email address like name@business.com.' };
+    return null;
+}
+
 interface WaitlistFormProps {
     /** Recorded with the sign-up so we know which form people used. */
     source: WaitlistSource;
@@ -58,9 +95,9 @@ interface WaitlistFormProps {
 
 export function WaitlistForm({ source, tone = 'light', shape = 'bar', note }: WaitlistFormProps) {
     const { status, email: joinedEmail, errorMessage, source: activeSource, join } = useWaitlist();
-    const [value, setValue] = useState('');
-    const [validationError, setValidationError] = useState<string | null>(null);
-    const inputId = useId();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [validationError, setValidationError] = useState<ValidationError | null>(null);
     const messageId = useId();
 
     if (status === 'joined') {
@@ -84,7 +121,9 @@ export function WaitlistForm({ source, tone = 'light', shape = 'bar', note }: Wa
 
     const isActive = activeSource === source;
     const submitting = status === 'submitting' && isActive;
-    const shownError = validationError ?? (status === 'error' && isActive ? errorMessage : null);
+    const shownError = validationError?.message ?? (status === 'error' && isActive ? errorMessage : null);
+    // A local check knows which field is wrong; a server error doesn't, so it marks neither.
+    const isInvalid = (field: FieldName) => validationError?.field === field;
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -92,44 +131,56 @@ export function WaitlistForm({ source, tone = 'light', shape = 'bar', note }: Wa
         // Bots fill every field; people never see this one. Drop the request silently.
         if (new FormData(event.currentTarget).get('company')) return;
 
-        if (!EMAIL_PATTERN.test(value.trim())) {
-            setValidationError('Enter an email address like name@business.com.');
-            return;
-        }
+        const error = validate(name, email);
+        setValidationError(error);
+        if (error) return;
 
-        setValidationError(null);
-        void join(value, source);
+        void join({ name, email }, source);
+    }
+
+    function clearErrorFor(field: FieldName) {
+        if (validationError?.field === field) setValidationError(null);
     }
 
     return (
         <form onSubmit={handleSubmit} noValidate>
-            <div className={cn(fieldShell({ tone, shape, invalid: Boolean(shownError) }))}>
-                <div className="relative flex-1">
-                    <label
-                        htmlFor={inputId}
-                        className={shape === 'pill'
-                            ? 'absolute -top-2 left-5 bg-paper px-1.5 text-xs font-medium text-ledger'
-                            : 'sr-only'}
-                    >
-                        Your email
-                    </label>
-                    <input
-                        id={inputId}
-                        type="email"
-                        name="email"
-                        autoComplete="email"
-                        inputMode="email"
-                        placeholder="you@yourbusiness.com"
-                        value={value}
-                        onChange={event => {
-                            setValue(event.target.value);
-                            if (validationError) setValidationError(null);
-                        }}
-                        aria-invalid={Boolean(shownError)}
-                        aria-describedby={messageId}
-                        className={input({ tone, shape })}
-                    />
-                </div>
+            <div className={cn('mb-3', fieldShell({ tone, shape, invalid: isInvalid('name') }))}>
+                <Field
+                    label="Your name"
+                    tone={tone}
+                    shape={shape}
+                    type="text"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Your full name"
+                    maxLength={NAME_MAX_LENGTH}
+                    value={name}
+                    onChange={event => {
+                        setName(event.target.value);
+                        clearErrorFor('name');
+                    }}
+                    aria-invalid={isInvalid('name')}
+                    aria-describedby={messageId}
+                />
+            </div>
+            <div className={cn(fieldShell({ tone, shape, invalid: isInvalid('email') }))}>
+                <Field
+                    label="Your email"
+                    tone={tone}
+                    shape={shape}
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    placeholder="you@yourbusiness.com"
+                    value={email}
+                    onChange={event => {
+                        setEmail(event.target.value);
+                        clearErrorFor('email');
+                    }}
+                    aria-invalid={isInvalid('email')}
+                    aria-describedby={messageId}
+                />
                 <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                 <Button
                     type="submit"

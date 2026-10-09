@@ -1,5 +1,12 @@
 import { createContext, useCallback, useContext, useMemo, useReducer, useRef, type ReactNode } from 'react';
-import { normalizeEmail, submitToWaitlist, WaitlistError, type WaitlistSource } from '../../lib/waitlist-api';
+import {
+    normalizeEmail,
+    normalizeName,
+    submitToWaitlist,
+    WaitlistError,
+    type WaitlistSignUp,
+    type WaitlistSource,
+} from '../../lib/waitlist-api';
 
 /*
  * One waitlist state shared by every form on the page, so joining from the hero
@@ -63,13 +70,13 @@ function initState(): WaitlistState {
 const FAILURE_MESSAGES: Record<WaitlistError['reason'], string> = {
     'not-configured': 'The waitlist isn’t accepting sign-ups yet. Please check back soon.',
     network: 'We couldn’t reach the waitlist. Check your connection and try again.',
-    invalid: 'That email doesn’t look right. Check it and try again.',
+    invalid: 'Your name or email doesn’t look right. Check them and try again.',
     'rate-limited': 'Too many attempts from this connection. Wait a minute, then try again.',
     server: 'The waitlist is having trouble right now. Try again in a few minutes.',
 };
 
 interface WaitlistContextValue extends WaitlistState {
-    join: (email: string, source: WaitlistSource) => Promise<void>;
+    join: (signUp: WaitlistSignUp, source: WaitlistSource) => Promise<void>;
 }
 
 const WaitlistContext = createContext<WaitlistContextValue | null>(null);
@@ -80,8 +87,8 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
     const failures = useRef(0);
     const retryAt = useRef(0);
 
-    const join = useCallback(async (rawEmail: string, source: WaitlistSource) => {
-        const email = normalizeEmail(rawEmail);
+    const join = useCallback(async (signUp: WaitlistSignUp, source: WaitlistSource) => {
+        const email = normalizeEmail(signUp.email);
 
         if (inFlight.current) return;
 
@@ -101,7 +108,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
         dispatch({ type: 'submit', source });
 
         try {
-            await submitToWaitlist(email, source);
+            await submitToWaitlist({ name: normalizeName(signUp.name), email }, source);
             failures.current = 0;
             storeEmail(email);
             dispatch({ type: 'joined', email });

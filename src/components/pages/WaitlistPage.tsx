@@ -64,7 +64,7 @@ export function WaitlistPage() {
                     </p>
 
                     <div className="mt-10 w-full max-w-xl">
-                        <WaitlistForm source="waitlist_page" shape="pill" note="We’ll only use your email to tell you when Orbit opens." />
+                        <WaitlistForm source="waitlist_page" shape="pill" note="We’ll only use your details to tell you when Orbit opens." />
                     </div>
 
                     <ul className="mt-8 flex flex-wrap justify-center gap-2 lg:hidden">

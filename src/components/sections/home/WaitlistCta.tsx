@@ -16,7 +16,7 @@ export function WaitlistCta() {
                                 Join the waitlist and we’ll email you the moment Orbit is ready, before we open it to everyone.
                             </p>
                         </div>
-                        <WaitlistForm source="landing_closing" tone="dark" note="We’ll only use your email to tell you when Orbit opens." />
+                        <WaitlistForm source="landing_closing" tone="dark" note="We’ll only use your details to tell you when Orbit opens." />
                     </div>
                 </DarkPanel>
             </Container>
