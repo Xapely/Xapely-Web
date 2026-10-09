@@ -13,7 +13,7 @@ export function Vision() {
                         <p className="mt-5 max-w-md text-lg leading-[1.7]">
                             We see a future where every business can find everything it needs to succeed in one place. We want Xapely to be the platform you rely on to run, manage and scale your business with ease.
                         </p>
-                        <ButtonLink href={PAGE_HREF.home} intent="dark" className="mt-8 self-start">See what Orbit does</ButtonLink>
+                        <ButtonLink to={PAGE_HREF.home} intent="dark" className="mt-8 self-start">See what Orbit does</ButtonLink>
                     </div>
                     <div className="m-3 grid place-items-center rounded-card bg-[radial-gradient(80%_80%_at_50%_40%,var(--color-brand-soft),var(--color-brand-ghost))] p-8 sm:p-12">
                         <img

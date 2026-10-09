@@ -23,7 +23,7 @@ export function WaitlistBand({ title, body, points }: WaitlistBandProps) {
                         </div>
                         <div className="lg:justify-self-end">
                             <p className="max-w-sm leading-[1.7] text-on-dark">{body}</p>
-                            <ButtonLink href={PAGE_HREF.waitlist} intent="light" className="mt-6">Join the waitlist</ButtonLink>
+                            <ButtonLink to={PAGE_HREF.waitlist} intent="light" className="mt-6">Join the waitlist</ButtonLink>
                         </div>
                     </div>
                 </DarkPanel>

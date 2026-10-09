@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+import { Link } from 'react-router';
 import { PAGE_HREF } from '../../layout/navigation';
 import { CheckList } from '../../ui/CheckList';
 import { Container } from '../../ui/Container';
@@ -55,7 +56,7 @@ export function BuiltFor() {
 
                 <div className="mx-auto mt-5 grid max-w-4xl gap-5 md:grid-cols-2">
                     {AUDIENCES.map(audience => (
-                        <a key={audience.title} href={PAGE_HREF.waitlist} className={audienceCard({ tone: audience.tone })}>
+                        <Link key={audience.title} to={PAGE_HREF.waitlist} className={audienceCard({ tone: audience.tone })}>
                             {audience.tone === 'brand' && (
                                 <OrbitRings className="absolute -right-40 -bottom-40 w-104" ringClassName="stroke-paper/25" dotClassName="fill-paper/70" />
                             )}
@@ -69,7 +70,7 @@ export function BuiltFor() {
                                     <Icon name="arrowUpRight" className="size-5" />
                                 </span>
                             </span>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </Container>

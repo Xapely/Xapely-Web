@@ -62,7 +62,7 @@ export function PlanCard({ plan, period }: { plan: Plan; period: BillingPeriod }
             </div>
 
             <ButtonLink
-                href={PAGE_HREF[plan.cta.page]}
+                to={PAGE_HREF[plan.cta.page]}
                 intent={plan.featured ? 'primary' : 'onDark'}
                 className="mt-6 w-full"
             >

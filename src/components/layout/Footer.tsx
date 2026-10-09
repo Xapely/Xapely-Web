@@ -1,28 +1,32 @@
+import { Link } from 'react-router';
 import logoUrl from '../../../assets/images/logo.webp';
 import { Container } from '../ui/Container';
 import { SocialLinks } from '../ui/SocialLinks';
 import { COMPANY_ADDRESS, CONTACT_EMAIL, PAGE_HREF } from './navigation';
 
+/** `to` is a route on this site; `href` leaves it (e.g. mailto:). */
+type FooterLink = { label: string } & ({ to: string; href?: never } | { href: string; to?: never });
+
 interface FooterColumn {
     title: string;
-    links: readonly { label: string; href: string }[];
+    links: readonly FooterLink[];
 }
 
 const COLUMNS: readonly FooterColumn[] = [
     {
         title: 'Orbit',
         links: [
-            { label: 'Features', href: `${PAGE_HREF.home}#features` },
-            { label: 'How it works', href: `${PAGE_HREF.home}#how-it-works` },
-            { label: 'Pricing', href: PAGE_HREF.pricing },
-            { label: 'Join the waitlist', href: PAGE_HREF.waitlist },
+            { label: 'Features', to: `${PAGE_HREF.home}#features` },
+            { label: 'How it works', to: `${PAGE_HREF.home}#how-it-works` },
+            { label: 'Pricing', to: PAGE_HREF.pricing },
+            { label: 'Join the waitlist', to: PAGE_HREF.waitlist },
         ],
     },
     {
         title: 'Company',
         links: [
-            { label: 'About us', href: PAGE_HREF.about },
-            { label: 'Contact', href: PAGE_HREF.contact },
+            { label: 'About us', to: PAGE_HREF.about },
+            { label: 'Contact', to: PAGE_HREF.contact },
             { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
         ],
     },
@@ -46,7 +50,11 @@ export function Footer() {
                         <h2 className={columnTitle}>{column.title}</h2>
                         <ul className="mt-4 space-y-3">
                             {column.links.map(link => (
-                                <li key={link.label}><a href={link.href} className={footerLink}>{link.label}</a></li>
+                                <li key={link.label}>
+                                    {link.to !== undefined
+                                        ? <Link to={link.to} className={footerLink}>{link.label}</Link>
+                                        : <a href={link.href} className={footerLink}>{link.label}</a>}
+                                </li>
                             ))}
                         </ul>
                     </div>

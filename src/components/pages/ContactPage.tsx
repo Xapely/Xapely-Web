@@ -1,5 +1,5 @@
 import { SiteLayout } from '../layout/SiteLayout';
-import { COMPANY_ADDRESS, CONTACT_EMAIL } from '../layout/navigation';
+import { COMPANY_ADDRESS, CONTACT_EMAIL, PAGES } from '../layout/navigation';
 import { OrbitDashboard } from '../mocks/OrbitDashboard';
 import { ContactForm } from '../sections/contact/ContactForm';
 import { Container } from '../ui/Container';
@@ -9,7 +9,7 @@ const PAYMENT_METHODS = ['Card', 'USSD', 'Bank transfer', 'WhatsApp', 'Email'] a
 
 export function ContactPage() {
     return (
-        <SiteLayout page="contact">
+        <SiteLayout meta={PAGES.contact}>
             <section className="bg-mist py-16 lg:py-24">
                 <Container className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                     <div className="max-w-xl">

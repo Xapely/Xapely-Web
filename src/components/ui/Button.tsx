@@ -1,5 +1,6 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { Link, type LinkProps } from 'react-router';
 import { cn } from '../../lib/cn';
 
 const buttonStyles = cva(
@@ -32,6 +33,7 @@ export function Button({ className, intent, size, type = 'button', ...props }: B
     return <button type={type} className={cn(buttonStyles({ intent, size }), className)} {...props} />;
 }
 
-export function ButtonLink({ className, intent, size, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & ButtonVariants) {
-    return <a className={cn(buttonStyles({ intent, size }), className)} {...props} />;
+/** A link to another page on the site, styled as a button. */
+export function ButtonLink({ className, intent, size, ...props }: LinkProps & ButtonVariants) {
+    return <Link className={cn(buttonStyles({ intent, size }), className)} {...props} />;
 }

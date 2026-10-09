@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import missionImageUrl from '../../../../assets/images/mission-hero.webp';
 import { PAGE_HREF } from '../../layout/navigation';
 import { Container } from '../../ui/Container';
@@ -27,13 +28,13 @@ export function AboutHero() {
                             Xapely builds tools that help you save time, stay organised and grow. Orbit, our invoicing platform, is where we’re starting.
                         </p>
                         <div className="mt-10 flex flex-wrap gap-8">
-                            <a href={PAGE_HREF.home} className={heroLink}>Meet Orbit <Icon name="arrowUpRight" className="size-4" /></a>
-                            <a href={PAGE_HREF.contact} className={heroLink}>Talk to us <Icon name="arrowUpRight" className="size-4" /></a>
+                            <Link to={PAGE_HREF.home} className={heroLink}>Meet Orbit <Icon name="arrowUpRight" className="size-4" /></Link>
+                            <Link to={PAGE_HREF.contact} className={heroLink}>Talk to us <Icon name="arrowUpRight" className="size-4" /></Link>
                         </div>
                     </div>
 
-                    <a
-                        href={PAGE_HREF.home}
+                    <Link
+                        to={PAGE_HREF.home}
                         className="relative mt-12 flex w-full max-w-68 flex-col gap-4 rounded-card bg-paper/10 p-3 text-paper ring-1 ring-paper/20 backdrop-blur-md transition-transform duration-300 ease-spring hover:-translate-y-1 active:translate-y-0 lg:absolute lg:top-16 lg:right-16 lg:mt-0"
                     >
                         <span className="block overflow-hidden rounded-control bg-mist">
@@ -43,7 +44,7 @@ export function AboutHero() {
                             <span className="text-sm leading-[1.5] font-semibold">Orbit, our first product: invoicing that gets you paid</span>
                             <span className="grid size-9 shrink-0 place-items-center rounded-full bg-paper text-ledger"><Icon name="arrowUpRight" className="size-4" /></span>
                         </span>
-                    </a>
+                    </Link>
                 </div>
 
                 <dl className="relative z-10 mx-auto -mt-px grid gap-6 rounded-b-panel bg-paper px-8 py-8 shadow-panel sm:grid-cols-3 lg:-mt-28 lg:mr-0 lg:w-176 lg:rounded-tl-panel lg:rounded-br-none lg:rounded-bl-panel lg:px-10 lg:shadow-none">

@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import missionImageUrl from '../../../../assets/images/mission-hero.webp';
 import { featureGroup } from '../../../content/orbit';
 import { PAGE_HREF } from '../../layout/navigation';
@@ -16,7 +17,7 @@ export function Mission() {
                     <p className="mt-5 max-w-lg text-lg leading-[1.7]">
                         By creating tools that save you time, reduce stress and help you get paid faster, we want you to focus less on the hassle and more on growth.
                     </p>
-                    <ButtonLink href={PAGE_HREF.waitlist} className="mt-8 self-start">Join the waitlist</ButtonLink>
+                    <ButtonLink to={PAGE_HREF.waitlist} className="mt-8 self-start">Join the waitlist</ButtonLink>
 
                     <ul className="mt-12 grid gap-4 sm:grid-cols-2">
                         {AREAS.map(area => (
@@ -24,9 +25,9 @@ export function Mission() {
                                 <Icon name={area.icon} className="size-5 text-brand" />
                                 <h3 className="mt-6 text-lg font-semibold tracking-[-0.02em]">{area.title}</h3>
                                 <p className="mt-1 text-sm leading-[1.6]">{area.summary}</p>
-                                <a href={`${PAGE_HREF.pricing}#compare`} className="mt-4 inline-block rounded-sm text-sm font-semibold text-brand-strong underline decoration-brand/40 underline-offset-4 hover:decoration-brand active:text-ledger">
+                                <Link to={`${PAGE_HREF.pricing}#compare`} className="mt-4 inline-block rounded-sm text-sm font-semibold text-brand-strong underline decoration-brand/40 underline-offset-4 hover:decoration-brand active:text-ledger">
                                     See what’s included
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>

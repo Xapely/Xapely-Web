@@ -10,18 +10,23 @@ npm install
 cp .env.example .env.local   # point VITE_API_URL at the Orbit backend
 npm run dev                  # http://localhost:5173
 npm run build                # typecheck, then build to dist/
-npm run preview              # serve dist/ locally
+npm start                    # serve dist/ (what Render runs)
 ```
 
 ## How it's organised
 
+A single-page React app. React Router handles every route in the browser, with clean URLs
+(`/about`, `/pricing`, …). Old `.html` links redirect to them.
+
 | Path | What lives there |
 | --- | --- |
-| `*.html` | One entry per page, holding only that page's title and metadata. Shared head tags are added in `vite.config.ts`. |
-| `src/entries/` | Mounts each page's React component. |
-| `src/components/pages/` | One component per page. |
+| `index.html` | The one HTML shell, with the homepage's metadata as the default. |
+| `src/main.tsx` | Mounts the app: global styles, `WaitlistProvider`, router. |
+| `src/router.tsx` | Route table, built from `PAGES` in `navigation.ts`, plus the 404 route. |
+| `src/components/pages/` | One component per page, including `NotFoundPage`. |
 | `src/components/sections/` | Page sections, grouped by page. `shared/` holds sections several pages use. |
-| `src/components/layout/` | Header, footer, `SiteLayout`, and `navigation.ts` (every URL, the contact email and the address). |
+| `src/components/layout/` | Header, footer, `SiteLayout`, `RootLayout`, and `navigation.ts` (every page's URL, title and description; the contact email and the address). |
+| `src/hooks/usePageMeta.ts` | Updates the title, description, canonical URL and `og:` tags when the route changes. |
 | `src/components/ui/` | Building blocks: `Button`, `Container`, `Icon`, `CheckList`, `FormField`, `DarkPanel`, `OrbitRings`, `SocialLinks`. |
 | `src/components/waitlist/` | `WaitlistProvider` (shared state for every waitlist form) and `WaitlistForm`. |
 | `src/content/orbit.ts` | Orbit's features grouped by area, and the **draft** plans and prices. |
@@ -37,13 +42,14 @@ remember an email that has already joined in this browser, and back off after fa
 
 ## Deploying
 
-`.github/workflows/deploy.yml` builds the site and publishes `dist/` to GitHub Pages on every push to `main`.
-One-time setup in the GitHub repo:
+Hosted on Render as a Web Service:
 
-1. **Settings → Pages → Source:** GitHub Actions.
-2. **Settings → Secrets and variables → Actions → Variables:** add `VITE_API_URL`.
+- **Build command:** `npm ci && npm run build`
+- **Start command:** `npm start` (`vite preview`, configured in `vite.config.ts` to use Render's `PORT` and only accept requests for the service's `onrender.com` hostname)
+- **Environment:** `VITE_API_URL`, the Orbit backend's origin. It's built into the bundle, so redeploy after changing it. Don't set `NODE_ENV=production`, because the build and `vite preview` need dev dependencies.
 
-`public/CNAME` keeps the custom domain.
+Every path is served `index.html` and the router picks the page, so there's nothing to configure for routes.
+When adding a custom domain, add it to `preview.allowedHosts` in `vite.config.ts`.
 
 ## Images
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PLANS } from '../../content/orbit';
+import { PAGES } from '../layout/navigation';
 import { SiteLayout } from '../layout/SiteLayout';
 import { BillingToggle, type BillingPeriod } from '../sections/pricing/BillingToggle';
 import { FeatureComparison } from '../sections/pricing/FeatureComparison';
@@ -10,7 +11,7 @@ export function PricingPage() {
     const [period, setPeriod] = useState<BillingPeriod>('monthly');
 
     return (
-        <SiteLayout page="pricing" headerTone="dark">
+        <SiteLayout meta={PAGES.pricing} headerTone="dark">
             <div className="bg-ledger bg-[radial-gradient(60%_40%_at_50%_0%,rgb(60_131_246/0.35),transparent_70%),radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:100%_100%,24px_24px]">
                 <section className="pt-20 pb-16 lg:pt-28">
                     <Container className="text-center">

@@ -1,11 +1,12 @@
 import { useEffect, useId, useState } from 'react';
 import { cva } from 'class-variance-authority';
+import { Link, NavLink, useMatch } from 'react-router';
 import logoUrl from '../../../assets/images/logo.webp';
 import { cn } from '../../lib/cn';
 import { ButtonLink } from '../ui/Button';
 import { Container } from '../ui/Container';
 import { Icon } from '../ui/Icon';
-import { NAV_ITEMS, PAGE_HREF, type PageKey } from './navigation';
+import { NAV_ITEMS, PAGE_HREF } from './navigation';
 
 export type HeaderTone = 'light' | 'dark';
 
@@ -46,13 +47,15 @@ const mobilePanel = cva('border-t md:hidden', {
 });
 
 interface HeaderProps {
-    current: PageKey;
     tone: HeaderTone;
 }
 
-export function Header({ current, tone }: HeaderProps) {
+export function Header({ tone }: HeaderProps) {
     const [menuOpen, setMenuOpen] = useState(false);
     const menuId = useId();
+    const onWaitlistPage = useMatch(PAGE_HREF.waitlist) !== null;
+    // Links don't reload the page any more, so the mobile menu has to close itself.
+    const closeMenu = () => setMenuOpen(false);
 
     useEffect(() => {
         if (!menuOpen) return;
@@ -63,30 +66,28 @@ export function Header({ current, tone }: HeaderProps) {
         return () => document.removeEventListener('keydown', onKey);
     }, [menuOpen]);
 
-    const links = NAV_ITEMS.map(item => ({
-        ...item,
-        href: PAGE_HREF[item.page],
-        ariaCurrent: item.page === current ? ('page' as const) : undefined,
-    }));
+    // NavLink sets aria-current="page" on the active link, which navLink styles.
+    // `end` stops "/" from matching every route.
+    const links = NAV_ITEMS.map(item => ({ ...item, to: PAGE_HREF[item.page] }));
 
     return (
         <header className={bar({ tone })}>
             <Container className="flex h-16 items-center justify-between gap-6">
-                <a href={PAGE_HREF.home} className="rounded-md" aria-label="Xapely home">
+                <Link to={PAGE_HREF.home} className="rounded-md" aria-label="Xapely home">
                     <img src={logoUrl} alt="" width={106} height={30} className="h-7 w-auto" />
-                </a>
+                </Link>
 
                 <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
                     {links.map(link => (
-                        <a key={link.page} href={link.href} aria-current={link.ariaCurrent} className={navLink({ tone })}>
+                        <NavLink key={link.page} to={link.to} end className={navLink({ tone })}>
                             {link.label}
-                        </a>
+                        </NavLink>
                     ))}
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    {current !== 'waitlist' && (
-                        <ButtonLink href={PAGE_HREF.waitlist} size="sm" className="hidden sm:inline-flex">Join the waitlist</ButtonLink>
+                    {!onWaitlistPage && (
+                        <ButtonLink to={PAGE_HREF.waitlist} size="sm" className="hidden sm:inline-flex">Join the waitlist</ButtonLink>
                     )}
                     <button
                         type="button"
@@ -104,12 +105,12 @@ export function Header({ current, tone }: HeaderProps) {
             <nav id={menuId} aria-label="Mobile" className={cn(mobilePanel({ tone }), menuOpen ? 'block' : 'hidden')}>
                 <Container className="flex flex-col gap-1 py-4">
                     {links.map(link => (
-                        <a key={link.page} href={link.href} aria-current={link.ariaCurrent} className={cn(navLink({ tone }), 'px-2 py-3')}>
+                        <NavLink key={link.page} to={link.to} end onClick={closeMenu} className={cn(navLink({ tone }), 'px-2 py-3')}>
                             {link.label}
-                        </a>
+                        </NavLink>
                     ))}
-                    {current !== 'waitlist' && (
-                        <ButtonLink href={PAGE_HREF.waitlist} className="mt-2">Join the waitlist</ButtonLink>
+                    {!onWaitlistPage && (
+                        <ButtonLink to={PAGE_HREF.waitlist} onClick={closeMenu} className="mt-2">Join the waitlist</ButtonLink>
                     )}
                 </Container>
             </nav>

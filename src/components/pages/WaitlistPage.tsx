@@ -1,4 +1,5 @@
 import { cn } from '../../lib/cn';
+import { PAGES } from '../layout/navigation';
 import { SiteLayout } from '../layout/SiteLayout';
 import { Icon, type IconName } from '../ui/Icon';
 import { SocialLinks } from '../ui/SocialLinks';
@@ -23,7 +24,7 @@ const RINGS = ['size-[34rem]', 'size-[54rem]', 'size-[76rem]'] as const;
 
 export function WaitlistPage() {
     return (
-        <SiteLayout page="waitlist">
+        <SiteLayout meta={PAGES.waitlist}>
             <section className="relative isolate overflow-hidden bg-[radial-gradient(60%_60%_at_50%_45%,var(--color-paper)_0%,var(--color-mist)_100%)] py-20 lg:min-h-[calc(100svh-4rem)] lg:py-28">
                 <div aria-hidden="true" className="absolute inset-0 -z-10 grid place-items-center">
                     {RINGS.map(size => (

@@ -52,8 +52,9 @@
 }
 
 @layer base {
+    /* Keeps #section targets clear of the sticky header. No smooth scrolling: route changes
+       reset the scroll position, and smooth would animate that from the old page's position. */
     html {
-        scroll-behavior: smooth;
         scroll-padding-top: 5rem;
     }
 
@@ -70,10 +71,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        html {
-            scroll-behavior: auto;
-        }
-
         *, *::before, *::after {
             transition-duration: 0.01ms !important;
             animation-duration: 0.01ms !important;

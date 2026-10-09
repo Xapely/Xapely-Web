@@ -1,3 +1,4 @@
+import { PAGES } from '../layout/navigation';
 import { SiteLayout } from '../layout/SiteLayout';
 import { AboutHero } from '../sections/about/AboutHero';
 import { Mission } from '../sections/about/Mission';
@@ -8,7 +9,7 @@ import { WaitlistBand } from '../sections/shared/WaitlistBand';
 
 export function AboutPage() {
     return (
-        <SiteLayout page="about">
+        <SiteLayout meta={PAGES.about}>
             <AboutHero />
             <WhoWeAre />
             <Principles />

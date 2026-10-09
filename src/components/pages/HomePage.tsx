@@ -1,3 +1,4 @@
+import { PAGES } from '../layout/navigation';
 import { SiteLayout } from '../layout/SiteLayout';
 import { BuiltFor } from '../sections/home/BuiltFor';
 import { Features } from '../sections/home/Features';
@@ -8,7 +9,7 @@ import { WhyOrbit } from '../sections/home/WhyOrbit';
 
 export function HomePage() {
     return (
-        <SiteLayout page="home">
+        <SiteLayout meta={PAGES.home}>
             <Hero />
             <Features />
             <WhyOrbit />
