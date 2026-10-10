@@ -1,7 +1,7 @@
 /** Mirrors WaitlistSource in the Orbit backend (src/waitlist/interface/waitlist-source.enum.ts). */
 export type WaitlistSource = 'landing_hero' | 'landing_closing' | 'waitlist_page';
 
-type WaitlistFailure = 'not-configured' | 'network' | 'invalid' | 'rate-limited' | 'server';
+type WaitlistFailure = 'not-configured' | 'network' | 'unreachable' | 'invalid' | 'rate-limited' | 'server';
 
 export class WaitlistError extends Error {
     readonly reason: WaitlistFailure;
@@ -51,7 +51,10 @@ export async function submitToWaitlist({ name, email }: WaitlistSignUp, source: 
             signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
         });
     } catch {
-        throw new WaitlistError('network');
+        // fetch rejects both when the visitor is offline and when the server
+        // can't be reached or CORS blocks the response — only blame the
+        // visitor's connection when the browser says it's down.
+        throw new WaitlistError(navigator.onLine === false ? 'network' : 'unreachable');
     }
 
     if (response.ok) return;

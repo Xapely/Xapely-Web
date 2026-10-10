@@ -7,7 +7,7 @@ export interface PageMeta {
     description: string;
 }
 
-export const SITE_URL = 'https://xapely.com';
+export const SITE_URL = import.meta.env.VITE_WEBSITE_URL?.trim().replace(/\/+$/, '');;
 
 /** Every page's URL and metadata lives here; nothing else hard-codes a path. */
 export const PAGES: Record<PageKey, PageMeta> = {

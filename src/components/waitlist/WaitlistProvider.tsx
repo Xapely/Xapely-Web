@@ -69,7 +69,8 @@ function initState(): WaitlistState {
 
 const FAILURE_MESSAGES: Record<WaitlistError['reason'], string> = {
     'not-configured': 'The waitlist isn’t accepting sign-ups yet. Please check back soon.',
-    network: 'We couldn’t reach the waitlist. Check your connection and try again.',
+    network: 'You seem to be offline. Check your connection and try again.',
+    unreachable: 'We couldn’t reach the waitlist server. Try again in a few minutes.',
     invalid: 'Your name or email doesn’t look right. Check them and try again.',
     'rate-limited': 'Too many attempts from this connection. Wait a minute, then try again.',
     server: 'The waitlist is having trouble right now. Try again in a few minutes.',
