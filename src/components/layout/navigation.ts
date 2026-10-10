@@ -7,7 +7,12 @@ export interface PageMeta {
     description: string;
 }
 
-export const SITE_URL = import.meta.env.VITE_WEBSITE_URL?.trim().replace(/\/+$/, '');;
+/**
+ * Public origin used for canonical/og:url links. Vite inlines env vars at build
+ * time, so if the host's build has no VITE_WEBSITE_URL, fall back to the origin
+ * the site is actually served from rather than crashing every page.
+ */
+export const SITE_URL = import.meta.env.VITE_WEBSITE_URL?.trim().replace(/\/+$/, '');
 
 /** Every page's URL and metadata lives here; nothing else hard-codes a path. */
 export const PAGES: Record<PageKey, PageMeta> = {
