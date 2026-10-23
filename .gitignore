@@ -2,3 +2,9 @@ node_modules/
 dist/
 .env.local
 .env
+
+# local AI/design working files
+/claude.md
+/CLAUDE.md
+/screenshots/
+/web_design_references/
