@@ -1,4 +1,4 @@
-export type PageKey = 'home' | 'about' | 'pricing' | 'contact' | 'waitlist';
+export type PageKey = 'home' | 'about' | 'pricing' | 'contact' | 'waitlist' | 'terms' | 'privacy';
 
 export interface PageMeta {
     /** Route path; also used for the canonical URL. */
@@ -40,6 +40,17 @@ export const PAGES: Record<PageKey, PageMeta> = {
         path: '/waitlist',
         title: 'Join the Orbit waitlist | Xapely',
         description: 'Orbit opens to the public soon. Join the waitlist and we’ll email you the moment it’s ready.',
+    },
+    // The Orbit app links to these two paths from its login, sign-up and business setup screens.
+    terms: {
+        path: '/terms',
+        title: 'Terms of Service | Xapely',
+        description: 'The terms and conditions for using Orbit by Xapely Technologies: your licence, acceptable use, automated messaging, liability and governing law.',
+    },
+    privacy: {
+        path: '/privacy',
+        title: 'Privacy Policy | Xapely',
+        description: 'How Xapely Technologies collects, uses, shares and protects personal data in Orbit, and your rights under the Nigeria Data Protection Act.',
     },
 };
 

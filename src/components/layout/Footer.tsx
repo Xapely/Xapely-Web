@@ -32,7 +32,13 @@ const COLUMNS: readonly FooterColumn[] = [
     },
 ];
 
+const LEGAL_LINKS = [
+    { label: 'Terms of Service', to: PAGE_HREF.terms },
+    { label: 'Privacy Policy', to: PAGE_HREF.privacy },
+] as const;
+
 const footerLink = 'rounded-sm text-sm text-body hover:text-ledger active:text-brand-strong';
+const legalLink = 'rounded-sm text-xs text-body underline decoration-line underline-offset-4 hover:text-ledger hover:decoration-brand active:text-brand-strong';
 const columnTitle = 'font-body text-sm font-semibold tracking-normal text-ledger';
 
 export function Footer() {
@@ -65,8 +71,15 @@ export function Footer() {
                     <SocialLinks className="mt-4" />
                 </div>
             </Container>
-            <Container className="border-t border-line py-6 text-center text-xs text-muted">
-                © 2026 Xapely. All rights reserved.
+            <Container className="flex flex-col items-center gap-3 border-t border-line py-6 text-xs text-muted sm:flex-row sm:justify-between">
+                <p>© 2026 Xapely. All rights reserved.</p>
+                <ul className="flex gap-6">
+                    {LEGAL_LINKS.map(link => (
+                        <li key={link.to}>
+                            <Link to={link.to} className={legalLink}>{link.label}</Link>
+                        </li>
+                    ))}
+                </ul>
             </Container>
         </footer>
     );

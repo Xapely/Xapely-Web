@@ -7,6 +7,7 @@ import { ContactPage } from './components/pages/ContactPage';
 import { HomePage } from './components/pages/HomePage';
 import { NotFoundPage } from './components/pages/NotFoundPage';
 import { PricingPage } from './components/pages/PricingPage';
+import { PrivacyPage, TermsPage } from './components/pages/LegalPages';
 import { WaitlistPage } from './components/pages/WaitlistPage';
 
 const PAGE_COMPONENTS: Record<PageKey, ComponentType> = {
@@ -15,6 +16,8 @@ const PAGE_COMPONENTS: Record<PageKey, ComponentType> = {
     pricing: PricingPage,
     contact: ContactPage,
     waitlist: WaitlistPage,
+    terms: TermsPage,
+    privacy: PrivacyPage,
 };
 
 /** Keeps links from the old multi-page site (/about.html) working, including any #section. */
