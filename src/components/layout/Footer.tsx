@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import logoUrl from '../../../assets/images/logo.webp';
 import { Container } from '../ui/Container';
 import { SocialLinks } from '../ui/SocialLinks';
-import { COMPANY_ADDRESS, CONTACT_EMAIL, PAGE_HREF } from './navigation';
+import { CONTACT_EMAIL, PAGE_HREF } from './navigation';
 
 /** `to` is a route on this site; `href` leaves it (e.g. mailto:). */
 type FooterLink = { label: string } & ({ to: string; href?: never } | { href: string; to?: never });
@@ -48,7 +48,6 @@ export function Footer() {
                 <div className="max-w-xs">
                     <img src={logoUrl} alt="Xapely" width={106} height={30} loading="lazy" className="h-7 w-auto" />
                     <p className="mt-4 text-sm leading-[1.7]">Simple tools to run, manage and grow your business.</p>
-                    <p className="mt-2 text-sm leading-[1.7] text-muted">{COMPANY_ADDRESS}</p>
                 </div>
 
                 {COLUMNS.map(column => (

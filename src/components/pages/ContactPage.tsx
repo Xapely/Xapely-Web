@@ -1,5 +1,5 @@
 import { SiteLayout } from '../layout/SiteLayout';
-import { COMPANY_ADDRESS, CONTACT_EMAIL, PAGES } from '../layout/navigation';
+import { CONTACT_EMAIL, PAGES } from '../layout/navigation';
 import { OrbitDashboard } from '../mocks/OrbitDashboard';
 import { ContactForm } from '../sections/contact/ContactForm';
 import { Container } from '../ui/Container';
@@ -25,21 +25,17 @@ export function ContactPage() {
                         <div aria-hidden="true" className="absolute -inset-y-12 left-[18%] hidden w-40 border-x border-dashed border-line bg-[repeating-linear-gradient(135deg,transparent_0_10px,rgb(10_27_61/0.04)_10px_11px)] lg:block" />
                         <OrbitDashboard className="relative lg:-mr-24" />
 
-                        <div className="relative mt-10 grid gap-6 sm:grid-cols-2">
-                            <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 rounded-card bg-paper p-5 shadow-inset-line hover:bg-brand-ghost active:scale-[0.99] transition-transform">
-                                <span className="grid size-10 place-items-center rounded-full bg-brand-ghost text-brand"><Icon name="mail" /></span>
-                                <span>
-                                    <span className="block text-sm text-muted">Email us</span>
-                                    <span className="block font-semibold text-ledger underline decoration-line underline-offset-4">{CONTACT_EMAIL}</span>
+                        <div className="relative mt-10">
+                            <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col gap-4 rounded-card bg-paper p-5 shadow-inset-line transition-transform hover:bg-brand-ghost focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 active:scale-[0.99] sm:flex-row sm:items-center sm:justify-between">
+                                <span className="flex items-center gap-3">
+                                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-ghost text-brand"><Icon name="mail" /></span>
+                                    <span>
+                                        <span className="block text-sm text-muted">Email us</span>
+                                        <span className="block font-semibold text-ledger underline decoration-line underline-offset-4">{CONTACT_EMAIL}</span>
+                                    </span>
                                 </span>
+                                <span className="text-sm leading-[1.6] text-muted sm:max-w-[15rem] sm:text-right">We work remotely, so email is the quickest way to reach us.</span>
                             </a>
-                            <div className="flex items-center gap-3 rounded-card bg-paper p-5 shadow-inset-line">
-                                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-ghost text-brand"><Icon name="mapPin" /></span>
-                                <span>
-                                    <span className="block text-sm text-muted">Visit us</span>
-                                    <span className="block text-sm font-semibold leading-[1.5] text-ledger">{COMPANY_ADDRESS}</span>
-                                </span>
-                            </div>
                         </div>
 
                         <div className="relative mt-10 border-t border-line pt-6">

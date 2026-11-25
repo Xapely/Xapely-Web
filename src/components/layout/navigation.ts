@@ -76,4 +76,3 @@ export const NAV_ITEMS: readonly NavItem[] = [
 ];
 
 export const CONTACT_EMAIL = 'hello@xapely.com';
-export const COMPANY_ADDRESS = '1, Second Avenue, Imagbon, Ikorodu, Lagos';
