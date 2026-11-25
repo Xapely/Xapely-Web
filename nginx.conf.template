@@ -1,0 +1,27 @@
+# Rendered by the nginx image on start: ${PORT} is replaced from the
+# environment. Only defined env vars are substituted, so nginx's own
+# variables ($uri) are left alone.
+server {
+    listen ${PORT};
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml;
+
+    # Vite fingerprints everything in /assets, so it can be cached forever.
+    location /assets/ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Single-page app: unknown paths fall back to index.html and React
+    # Router picks the page (including the 404 page).
+    location / {
+        try_files $uri $uri/ /index.html;
+        add_header Cache-Control "no-cache";
+    }
+}

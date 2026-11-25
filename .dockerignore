@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.gitignore
+.github
+# Build-time values come from build args, never from a copied .env
+.env
+.env.*
+screenshots
+web_design_references
+*.md
+Dockerfile
+.dockerignore
